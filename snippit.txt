@@ -1,0 +1,60 @@
+const takeUniqueOrThrow = <T>(values: T[]): T => {
+  if (values.length !== 1)
+    throw new Error("Found non unique or inexistent value");
+  return values[0]!;
+};
+
+// Use it in a query as follows:
+const user = await db.select().from(users).where(eq(users.id, userId)).then(takeUniqueOrThrow)
+
+
+
+
+// export const authConfig = {
+// 	pages: {
+// 		signIn: "/login",
+// 		signOut: "/logout",
+// 	},
+// 	adapter: DrizzleAdapter(db),
+// 	session: { strategy: "jwt" },
+// 	providers: [
+// 		GitHub,
+// 		Google({
+// 			authorization: {
+// 				params: {
+// 					prompt: "consent",
+// 					access_type: "offline",
+// 					response_type: "code",
+// 				},
+// 			},
+// 		}),
+// 		Credentials({
+// 			credentials: {
+// 				email: {},
+// 				password: {},
+// 			},
+// 			authorize: async (credentials) => {
+// 				// try {
+// 				// const validatedFields = await loginSchema.validate(credentials, { abortEarly: false });
+
+// 				// const { email, password } = validatedFields;
+
+// 				// const user = await getUserByEmail(email);
+
+// 				// if (!user || !user.password) return null;
+
+// 				// const passwordMatch = await bcrypt.compare(password, user.password);
+
+// 				// if (passwordMatch) return user;
+// 				// 	return null;
+// 				// } catch (error) {
+// 				// 	return null;
+// 				// }
+// 				return null;
+// 			},
+// 		}),
+// 	],
+// } satisfies NextAuthConfig;
+
+
+  throw new InvalidLoginError()
